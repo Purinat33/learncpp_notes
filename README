@@ -13,6 +13,7 @@ Things like:
 * Changing from `${file}` to `*.cpp` to build all C++ files and not just one specific file.
 * Adding `-pedantic-errors`: Disable compiler extensions to ensure your programs (and coding practices) remain compliant with C++ standards and will work on any system. (On trying this thing seems to not work)
 * Add `-std=g++17` or other g++ version after `g++` help with deprecation error
+* `-W` family are used to make compiler give more detailed warnings/treat warnings as error etc.
 
 Command example
 ```bash
@@ -46,6 +47,12 @@ My *coderunner* extension's `executor map` config (C/C++ section):
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "-ggdb",
+                "-Wall",
+                "-Weffc++",
+                "-Wextra",
+                "-Wconversion",
+                "-Wsign-conversion",
+                "-Werror",
                 "*.cpp",
                 "-o",
                 "${fileDirname}/out/${fileBasenameNoExtension}"
