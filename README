@@ -3,7 +3,7 @@
 ## Setting up *each* project.
 The tutorial recommend people creating a new project and do the below steps everytime. But since I am ~~lazy~~ compacted, I decided to do those only **once** with each subfolder being 1 tutorial or chapter.
 
-**Remember to select `clang++` when selecting run/debug tasks** (if on MacOS. Have not tried on a Windows yet)
+***Remember to select `clang++` when selecting run/debug tasks** (if on MacOS. Have not tried on a Windows yet)
 
 You still need to look inside files like `tasks.json` to see some extra configuration that will be useful in the future or when we create projects from scratch.
 
@@ -96,3 +96,21 @@ My *coderunner* extension's `executor map` config (C/C++ section):
 
 
 
+## Notes:
+
+1. Definition vs Declaration vs Pure declaration vs Initializer
+![image](./asset/definition_declaration_pure_initializer.png)
+
+2. C++ One Definition Rule (ODR)
+The one definition rule (ODR) 
+
+The one definition rule (or ODR for short) is a well-known rule in C++. The ODR has three parts:
+
+* Within a *file*, each function, variable, type, or template can only have one definition. Definitions occurring in different scopes (e.g. local variables defined inside different functions, or functions defined inside different namespaces) do not violate this rule.
+
+* Within a *program*, each function or variable can only have one definition. This rule exists because programs can have more than one file (we’ll cover this in the next lesson). Functions and variables not visible to the linker are excluded from this rule (discussed further in lesson 7.6 -- Internal linkage).
+
+* Types, templates, inline functions, and inline variables are allowed to have duplicate definitions in different files, so long as each definition is identical. We haven’t covered what most of these things are yet, so don’t worry about this for now -- we’ll bring it back up when it’s relevant.
+
+
+Violating part 1 of the ODR will cause the compiler to issue a redefinition error. Violating ODR part 2 will cause the linker to issue a redefinition error. Violating ODR part 3 will cause undefined behavior.
